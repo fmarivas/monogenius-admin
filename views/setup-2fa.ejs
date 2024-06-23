@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setup 2FA</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+	<style>
+		body {
+			background-color: #f4f4f9; /* Cor de fundo suave */
+		}
+		.qr-code-container {
+			margin-top: 100px;
+			background: #ffffff; /* Cor de fundo para o container */
+			border-radius: 15px;
+			box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra suave */
+			padding: 40px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+		.qr-code-img {
+			margin-top: 20px;
+			width: 300px; /* Aumentado de 200px para 300px */
+			height: auto; /* Mantém a altura proporcional à largura */
+			border: 1px solid #ccc; /* Borda suave ao redor do QR Code */
+			border-radius: 10px; /* Bordas arredondadas para o QR Code */
+			padding: 10px; /* Espaço entre a borda e a imagem */
+		}
+	</style>
+
+</head>
+<body>
+    <div class="container qr-code-container">
+        <h1 class="text-center">Configure a Autenticação de Dois Fatores</h1>
+        <% if (qrCodeImageUrl) { %>
+            <p class="text-center">Escaneie o QR Code abaixo com seu aplicativo de autenticação para configurar.</p>
+            <img src="<%= qrCodeImageUrl %>" alt="QR Code 2FA" class="qr-code-img">
+        <% } else { %>
+            <p class="text-danger text-center"><%= message %></p>
+        <% } %>
+    </div>
+</body>
+</html>

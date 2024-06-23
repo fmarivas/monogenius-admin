@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "monogenius",
+  "private_key_id": "93cba03928722ef3e8eb398271447e97ca152329",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDHyfD92FM2dtjH\nuA3OW0hiAQD7dzm7QycaQB292XMutykAvovjKioVHZj1MjN/8YuXLs9c/PMhGRYJ\naYBFIuxxbuieKyxx3gxAC0pQIKNm9kg+v/SpBFZEXisxorvMs0UfdRz0wyvi4Nhd\n0NHDYHwWi3NTcCcHWUSQOuRSbvrG6f610fGTD5dDYxc+PCIjFKpK2h8crrRI1e8p\nrxa+TdzrzkS2D25Ca8nz0FXb8A61rcT93GMndADhGI+VrgBOWuHZ5gL2iWgQK1j8\nqjsUFRS6qKwGf/EbLU+weJCNWvmO8KuATGTN5Ybknlu11MtXe4ul1VONiegdJj9w\n9MGPIcopAgMBAAECggEAPs2u2YU6p0jV3XZwtJlCWDh7kBELD2BNNvXHw6nLCPjf\nxVGg1MCo6Olcb1ugD8yk9lnrKo6DeTiTElNdVJ5lWEUmj63/sy27iRhjfGu+Ifwy\nerNJ3CW2XpiBmIFQ6sjB5mEgwJpnvdKzgU5G2lWGvGmKz8RWKHu5z2ML6hPj9koC\nesowV4VddQrp+bugbmQwMPrr4/s8PDXEAsQY/5CtC2g7dH8OaSF2t3PyBG3SLWzV\nLZD3Vnk+i/lzU+cQRqYuEZEcgwH3UXQaS6gp//OS2mwQqgh6pMfZ1HR/lFv0eWNK\nXIlY0qLGV5ueO95sxzaOE064sm3+XW7DSXdNZ9EiZwKBgQD5uNUS7NnHp81+MeTL\nL9RHUvsEZGDKUtAQBVw75JtKzY2LnmezFxvSZzoVwD8GntZbEaIqNU/q0uXqG47c\nsIuCwXc3bFsq0g1inAUjz6KZ1ZjbFGGIytGVGVQ7BEZD1/09WwR7ja5/lQQ923uk\nyvDz0uC3Ng6FQ5Wgj4SJ21tr2wKBgQDMz79wU336E2GrDusZN1otIrDpShaAn8dA\nvMyJM5Sz7dYrXJPRtUhtFyNOxdJdIBrpetLLIrVDGq4ZBLaZ0ATbkQC0FwOeh2uv\nic0dLkvi7xDiP4bJOSVmWU3/vwd3KaeTv+xhgzjy3W4K5ZRihDlb4Ar78pjLpD+W\nDITnGQLjSwKBgDrlthN1m1O0pwnJeL3XdQixcJSznAR8DaiJqxxRKbM10dmJLcoW\nfDBeultg8Tx9f+8QtJ+h3Ux0G1fg0gwI846OVLDUtJff3NpSFABDO4Vu1FNvdiWO\nOGojBDO7KVtc+NRcwCzn2K0sl0iDmKDgYH4RUYDElh4mN4cb8lWVT/WbAoGBAJjA\nzUhKjSepsutw2flZpkEJoaatIjFWebaX2Xju5pZ36Yc3qev7aAQtAKFsu2PHYSsH\n9xWYUla1HGn+cO4xDp5v/HVUwNdIqxEmFrwP3ntn0FDeDnofy/wU2S7IXBoNEDYL\nK5Li2uOQMNWhutTrRxh19dtJaZpgayhPOARgTB4XAoGBAPMNe36mwGbq/0gfR70q\n+QkqWTWGHJPnzuTuIpu4zBnBA38tFjekwhbIKJHSp1bSEOT/bqvI1o9K+rqERs8e\nvmdOkwnIY0Egq+l70RxK/0kGgQujh1aXITBhzHktKWbz6oBVIvSpIYmlRVSGxrW5\nVIiZTdeRYinZZ6CcTHpDarYI\n-----END PRIVATE KEY-----\n",
+  "client_email": "newmonogenius@monogenius.iam.gserviceaccount.com",
+  "client_id": "116265047545459147187",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/newmonogenius%40monogenius.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - <%=title%></title>
+  <script src="/assets/js/dashboard.js"></script>
+  <script src="https://kit.fontawesome.com/yourKitCode.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/assets/css/dashboard.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+</head>
+<body class="flex justify-center">
+  <div class="overflow-auto bg-gray-200 w-full h-screen dark:bg-gray-700 flex flex-col justify-center items-center">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:py-8 lg:px-8">
+      <div class="grid grid-cols-1 text-center gap-5 mt-4">
+        <div class="btn-metric cursor-pointer hover:bg-gray-100 bg-white overflow-hidden shadow sm:rounded-lg dark:bg-gray-900">
+          <div class="px-4 py-5 sm:p-6">
+            <dl>
+              <dt class="text-sm leading-5 font-medium text-gray-500 truncate dark:text-gray-400" title="Medida de satisfação e lealdade do cliente, baseado na probabilidade de recomendar o produto a outros">Net Promoter Score</dt>
+              <dd class="mt-1 text-3xl leading-9 font-semibold text-indigo-600 dark:text-indigo-400">+65</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-8 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white overflow-hidden shadow sm:rounded-lg dark:bg-gray-900">
+        <div class="px-4 py-5 sm:p-6">
+          <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-white">Chart Area</h3>
+          <div class="mt-4">
+            <!-- Área para exibir o gráfico correspondente ao item selecionado -->
+            <div id="chart-container" class="h-96"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

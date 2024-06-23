@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Admin Panel - <%=title%></title>
+	<script src="/assets/js/layout.js"></script>
+	<script src="https://kit.fontawesome.com/yourKitCode.js" crossorigin="anonymous"></script>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicon/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon/favicon-16x16.png">
+	<link rel="manifest" href="/assets/img/favicon/site.webmanifest">  
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+</head>
+<body class="flex h-screen">
+	<div class="flex h-screen bg-gray-100 w-full">
+		<!-- sidebar -->
+		<div id="sidebar" class="hidden lg:flex flex-col w-64 bg-gray-800">
+			<div class="flex items-center justify-center h-16 bg-gray-900">
+				<span class="text-white font-bold uppercase">Monogenius app admin</span>
+			</div>
+			<div class="flex flex-col flex-1 overflow-y-auto">
+				<nav class="flex-1 px-2 py-4 bg-gray-800">
+					<% Object.entries(pageDetails).forEach(([pageKey, details]) => { %>
+					<% const isActive = page && page === pageKey; %>
+					<% const activeClass = isActive ? 'text-white bg-gray-500' : ''; %>
+					<a href="/c/<%= pageKey %>" class="flex items-center px-4 py-2 text-gray-100 <%= activeClass %> hover:bg-gray-700">
+						<i class="<%= details.icon %>"></i>
+					   <span class="font-bold ml-5"><%= details.name %></span>
+					</a>
+					<% }); %>			
+				</nav>
+				<div class="flex items-center px-4 py-2 mt-auto bg-gray-700">
+					<% if (!imgData) { %>
+						<img src="/assets/img/profile.jpg" class="rounded-full mr-2" alt="Avatar">
+					<% } else { %>
+						<img src="<%= imgData %>" id="imgProfile" class="rounded-full mr-2" width='50' height="50" alt="Avatar">
+					<% } %>
+					<span class="text-gray-100"><%= user.first_name %> <%= user.last_name %></span>
+				</div>
+			</div>
+		</div>
+
+		<!-- Main content -->
+		<div class="flex flex-col flex-1 overflow-y-hidden">
+			<div class="flex items-center justify-between p-2 bg-white border-b border-gray-200 shadow sticky top-0">
+				<div class="flex items-center px-4 ">
+					<button type="button" id="menuToogle" class="text-gray-500 focus:outline-none focus:text-gray-700">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+							stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+								d="M4 6h16M4 12h16M4 18h16" />
+						</svg>
+					</button>
+					<input class="mx-4 w-full border rounded-md px-4 py-2" type="text" placeholder="Search">
+				</div>
+			</div>
+			<div class="">
+				<%- include('pages/' + body) %>
+			</div>
+		</div>
+		
+	</div>
+</body>
+</html>
