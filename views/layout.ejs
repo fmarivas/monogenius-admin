@@ -4,14 +4,14 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Admin Panel - <%=title%></title>
-	<script src="/assets/js/layout.js"></script>
+	<script src="/static/assets/js/layout.js"></script>
 	<script src="https://kit.fontawesome.com/yourKitCode.js" crossorigin="anonymous"></script>
 	<script src="https://cdn.tailwindcss.com"></script>
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-	<link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicon/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon/favicon-16x16.png">
-	<link rel="manifest" href="/assets/img/favicon/site.webmanifest">  
+	<link rel="apple-touch-icon" sizes="180x180" href="/static/assets/img/favicon/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/static/assets/img/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/static/assets/img/favicon/favicon-16x16.png">
+	<link rel="manifest" href="/static/assets/img/favicon/site.webmanifest">  
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
 </head>
 <body class="flex h-screen">
@@ -34,7 +34,7 @@
 				</nav>
 				<div class="flex items-center px-4 py-2 mt-auto bg-gray-700">
 					<% if (!imgData) { %>
-						<img src="/assets/img/profile.jpg" class="rounded-full mr-2" alt="Avatar">
+						<img src="/static/assets/img/profile.jpg" class="rounded-full mr-2" alt="Avatar">
 					<% } else { %>
 						<img src="<%= imgData %>" id="imgProfile" class="rounded-full mr-2" width='50' height="50" alt="Avatar">
 					<% } %>
