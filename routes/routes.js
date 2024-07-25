@@ -17,6 +17,7 @@ const keygen = require('../controllers/keygen/keygen')
 const authenticator = require('../controllers/function/Authenticator')
 const isAuth = require('../controllers/function/middleware/auth')
 
+const pageResources = require('../controllers/config/pageResources')
 
 const loginValidators = [
     check('email').isEmail().withMessage('Enter a valid email address'),
@@ -139,7 +140,7 @@ router.get('/c/:id', isAuth, async (req,res,next) => {
 		next(error); // Passa o erro para o middleware de erro		
 	}
 		
-		
+		console.log(usersData)
     if (pageDetails[id]) {
         res.render('layout', {
             title: pageDetails[id].name,
@@ -149,6 +150,7 @@ router.get('/c/:id', isAuth, async (req,res,next) => {
 			usersData: usersData,
 			imgData: imgData,
 			user: req.user,
+			pageResources: pageResources[id] || {},
         });
     } else {
 		let error = new Error("Page not found");
@@ -160,7 +162,7 @@ router.get('/c/:id', isAuth, async (req,res,next) => {
 
 router.get('/api/:id', isAuth, async (req, res) => {
   const id = req.params.id;
-  const { startDate, endDate, period } = req.query;
+  const { startDate, endDate, period } = req.query; 
   
   const validAPIRoutes = ['users', 'page_visits', 'user_retention', 'revenue'];
   

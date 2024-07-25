@@ -4,8 +4,18 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Admin Panel - <%=title%></title>
+	<% if (pageResources && pageResources.css) { %>
+	  <% pageResources.css.forEach(function(css) { %>
+		<link rel="stylesheet" href="<%= assetPath(css) %>">
+	  <% }); %>
+	<% } %>
+	
+	<% if (pageResources && pageResources.inlineStyles) { %>
+	  <style>
+		<%- pageResources.inlineStyles %>
+	  </style>
+	<% } %>	
 	<script src="/static/assets/js/layout.js"></script>
-	<script src="https://kit.fontawesome.com/yourKitCode.js" crossorigin="anonymous"></script>
 	<script src="https://cdn.tailwindcss.com"></script>
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<link rel="apple-touch-icon" sizes="180x180" href="/static/assets/img/favicon/apple-touch-icon.png">
@@ -13,6 +23,7 @@
 	<link rel="icon" type="image/png" sizes="16x16" href="/static/assets/img/favicon/favicon-16x16.png">
 	<link rel="manifest" href="/static/assets/img/favicon/site.webmanifest">  
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css" integrity="sha512-Ez0cGzNzHR1tYAv56860NLspgUGuQw16GiOOp/I2LuTmpSK9xDXlgJz3XN4cnpXWDmkNBKXR/VDMTCnAaEooxA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body class="flex h-screen">
 	<div class="flex h-screen bg-gray-100 w-full">
@@ -61,7 +72,18 @@
 				<%- include('pages/' + body) %>
 			</div>
 		</div>
-		
 	</div>
+	
+	<%
+		function assetPath(path) {
+		  return path + '?v=' + (process.env.ASSET_VERSION || '1');
+		}
+	%>
+	
+	<% if (pageResources && pageResources.js) { %>
+	  <% pageResources.js.forEach(function(js) { %>
+		<script src="<%= assetPath(js) %>"></script>
+	  <% }); %>
+	<% } %>	
 </body>
 </html>
