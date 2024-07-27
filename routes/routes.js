@@ -282,8 +282,8 @@ router.post('/login', loginValidators, (req, res, next) => {
 				req.flash('error', 'Invalid 2FA code.');
 				return res.render('two-factor-auth', { errorMessage: "Invalid 2FA code." });
 			}
-			}
-			}
+			
+			
 		} catch (error) {
 			console.error(error);
 			res.render('two-factor-auth', { errorMessage: "An error occurred while verifying 2FA code." });
