@@ -100,7 +100,17 @@ app.use(express.json());
 
 
 
-app.use('/static',express.static(path.join(__dirname, 'public')));
+const publicPath = path.join(__dirname, 'public');
+app.use('/static', express.static(publicPath, {
+  setHeaders: (res, path, stat) => {
+    if (path.endsWith('.js')) {
+      res.set('Content-Type', 'application/javascript');
+    } else if (path.endsWith('.css')) {
+      res.set('Content-Type', 'text/css');
+    }
+  }
+}))
+  
 app.use('/', routes);
 
 
