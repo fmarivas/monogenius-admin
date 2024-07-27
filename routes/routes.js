@@ -139,8 +139,7 @@ router.get('/c/:id', isAuth, async (req,res,next) => {
 		error.status = 500; // Define o status HTTP para o erro
 		next(error); // Passa o erro para o middleware de erro		
 	}
-		
-		console.log(usersData)
+	
     if (pageDetails[id]) {
         res.render('layout', {
             title: pageDetails[id].name,
@@ -221,12 +220,15 @@ router.post('/login', loginValidators, (req, res, next) => {
         if (err) {
             return next(err);
         }
-		
         if (!user) {
             // Se usar connect-flash ou flash similar para mensagens de erro
             req.flash('error', {errorMessage: info.message});
             return res.redirect('/auth/login');	
         }
+		
+		console.log(user)
+		console.log(err)
+		console.log(info)
 		
         req.logIn(user, (err) => {
             if (err) {
@@ -246,45 +248,62 @@ router.post('/login', loginValidators, (req, res, next) => {
 });
 
 
-router.post('/verify-2fa', async (req, res) => {
-    const tokenParts = req.body.token;
-	
-    if (!tokenParts || !Array.isArray(tokenParts)) {
-        return res.render('two-factor-auth', { errorMessage: "Invalid token data." });
-    }
-
-    const userToken = tokenParts.join('');
-	
-    try {
-        const userSecretData = await User.getUserSecret(req.user.id);
+	router.post('/verify-2fa', async (req, res) => {
+		const tokenParts = req.body.token;
 		
-        if (!userSecretData) {
-            return res.render('two-factor-auth', { errorMessage: "No secret found for user." });
-        }
+		if (!tokenParts || !Array.isArray(tokenParts)) {
+			return res.render('two-factor-auth', { errorMessage: "Invalid token data." });
+		}
 
-        const is2faValid = await authenticator.verifyTwoFactorAuthCode(userSecretData, userToken);
-        if (is2faValid) {
-				req.session.isAuthenticated = true;
-				req.session.loggedIn = null;
+		const userToken = tokenParts.join('');
+		
+		try {
+			const userSecretData = await User.getUserSecret(req.user.id);
+			
+			if (!userSecretData) {
+				return res.render('two-factor-auth', { errorMessage: "No secret found for user." });
+			}
 
-				req.session.save(err => {
-					if (err) {
-						console.error('Error saving session:', err);
-						return res.render('two-factor-auth', { errorMessage: "An error occurred. Please try again." });
-					}
+			const is2faValid = await authenticator.verifyTwoFactorAuthCode(userSecretData, userToken);
+			if (is2faValid) {
+					req.session.isAuthenticated = true;
+					req.session.loggedIn = null;
 
-					res.redirect('/c/dashboard');
-				});
-            
+					req.session.save(err => {
+						if (err) {
+							console.error('Error saving session:', err);
+							return res.render('two-factor-auth', { errorMessage: "An error occurred. Please try again." });
+						}
+
+						res.redirect('/c/dashboard');
+					});
+				
+			} else {
+				req.flash('error', 'Invalid 2FA code.');
+				return res.render('two-factor-auth', { errorMessage: "Invalid 2FA code." });
+			}
+			}
+			}
+		} catch (error) {
+			console.error(error);
+			res.render('two-factor-auth', { errorMessage: "An error occurred while verifying 2FA code." });
+		}
+	});
+
+
+router.delete('/delete-user', isAuth, async (req, res) => {
+    try {
+        const userId = req.body.userId;
+        const result = await manageUsers.Users.deleteUser(userId);
+        if (result.success) {
+            res.json({ message: 'Usuário deletado com sucesso.' });
         } else {
-			req.flash('error', 'Invalid 2FA code.');
-            return res.render('two-factor-auth', { errorMessage: "Invalid 2FA code." });
+            res.status(400).json({ error: result.message });
         }
     } catch (error) {
-        console.error(error);
-        res.render('two-factor-auth', { errorMessage: "An error occurred while verifying 2FA code." });
+        console.error('Erro ao deletar usuário:', error);
+        res.status(500).json({ error: 'Erro interno do servidor' });
     }
 });
-
 
 module.exports = router

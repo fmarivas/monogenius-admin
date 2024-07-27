@@ -27,85 +27,85 @@
         </label>
       </div>
 	  
-<div id="usersData" class="border-t pt-4">
-  <h4 class="text-lg font-semibold text-gray-700 mb-4">Lista de Usuários</h4>
-<div class="table-responsive">
-  <table class="table table-hover">
-    <thead class="bg-light">
-      <tr>
-        <th class="sortable"><span>#</span> <i class="fas fa-sort"></i></th>
-        <th class="sortable"><span>ID</span> <i class="fas fa-sort"></i></th>
-        <th><span>Image</span></th>
-        <th class="sortable"><span>F. Name</span> <i class="fas fa-sort"></i></th>
-        <th class="sortable"><span>L. Name</span> <i class="fas fa-sort"></i></th>
-        <th class="sortable"><span>Email</span> <i class="fas fa-sort"></i></th>
-        <th class="sortable"><span>Date</span> <i class="fas fa-sort"></i></th>
-        <th class="sortable"><span>Tier</span> <i class="fas fa-sort"></i></th>
-        <th class="sortable"><span>Action</span></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% if (Array.isArray(usersData) && usersData.length > 0) { %>
-        <% usersData.forEach(function(userData, index) { %>
-          <tr>
-            <td><%= index + 1 %></td>
-            <td class="user-id-cell"><%= userData.id || userData.user_code || 'N/A' %></td>
-            <td class="user-profile">
-              <img src="<%= userData.profile_pic || 'assets/img/profile.jpg' %>" alt="User Image" class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover;">
-            </td>
-            <td><%= userData.fname || 'N/A' %></td>
-            <td><%= userData.lname || 'N/A' %></td>
-            <td class="user-email-cell"><%= userData.email || 'N/A' %></td>
-            <td><%= userData.date_registered ? new Date(userData.date_registered).toLocaleDateString('pt-BR') : 'N/A' %></td>
-            <td>
-              <% if (userData.tier) { %>
-                <span class="badge bg-<%= userData.tier.toLowerCase() === 'premium' ? 'success' : 'primary' %>">
-                  <%= userData.tier.charAt(0).toUpperCase() + userData.tier.slice(1).toLowerCase() %>
-                </span>
-              <% } else { %>
-                N/A
-              <% } %>
-            </td>
-            <td>
-              <button class="btn btn-sm btn-danger" data-user-id="<%= userData.id || userData.user_code %>">
-                <i class="fas fa-trash-alt"></i>
-              </button>
-            </td>
-          </tr>
-        <% }); %>
-      <% } else { %>
-        <tr>
-          <td colspan="9" class="text-center">No users found</td>
-        </tr>
-      <% } %>
-    </tbody>
-  </table>				
-</div>
-</div>
+	<div id="usersData" class="border-t pt-4">
+	  <h4 class="text-lg font-semibold text-gray-700 mb-4">Lista de Usuários</h4>
+	<div class="table-responsive">
+	  <table class="table table-hover">
+		<thead class="bg-light">
+		  <tr>
+			<th class="sortable"><span>#</span> <i class="fas fa-sort cursor-pointer cursor-pointer"></i></th>
+			<th class="sortable"><span>ID</span> <i class="fas fa-sort cursor-pointer"></i></th>
+			<th><span>Image</span></th>
+			<th class="sortable"><span>F. Name</span> <i class="fas fa-sort cursor-pointer"></i></th>
+			<th class="sortable"><span>L. Name</span> <i class="fas fa-sort cursor-pointer"></i></th>
+			<th class="sortable"><span>Email</span> <i class="fas fa-sort cursor-pointer"></i></th>
+			<th class="sortable"><span>Date</span> <i class="fas fa-sort cursor-pointer"></i></th>
+			<th class="sortable"><span>Tier</span> <i class="fas fa-sort cursor-pointer"></i></th>
+			<th class="sortable"><span>Action</span></th>
+		  </tr>
+		</thead>
+		<tbody>
+		  <% if (Array.isArray(usersData) && usersData.length > 0) { %>
+			<% usersData.forEach(function(userData, index) { %>
+			  <tr>
+				<td><%= index + 1 %></td>
+				<td class="user-id-cell"><%= userData.id || userData.user_code || 'N/A' %></td>
+				<td class="user-profile">
+				  <img src="<%= userData.profile_pic || 'assets/img/profile.jpg' %>" alt="User Image" class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover;">
+				</td>
+				<td><%= userData.fname || 'N/A' %></td>
+				<td><%= userData.lname || 'N/A' %></td>
+				<td class="user-email-cell"><%= userData.email || 'N/A' %></td>
+				<td><%= userData.date_registered ? new Date(userData.date_registered).toLocaleDateString('pt-BR') : 'N/A' %></td>
+				<td>
+				  <% if (userData.tier) { %>
+					<span class="badge bg-<%= userData.tier.toLowerCase() === 'premium' ? 'success' : 'primary' %>">
+					  <%= userData.tier.charAt(0).toUpperCase() + userData.tier.slice(1).toLowerCase() %>
+					</span>
+				  <% } else { %>
+					N/A
+				  <% } %>
+				</td>
+				<td>
+				  <button class="btn btn-sm btn-danger" data-user-id="<%= userData.id || userData.user_code %>">
+					<i class="fas fa-trash-alt delete-user"></i>
+				  </button>
+				</td>
+			  </tr>
+			<% }); %>
+		  <% } else { %>
+			<tr>
+			  <td colspan="9" class="text-center">No users found</td>
+			</tr>
+		  <% } %>
+		</tbody>
+	  </table>				
+	</div>
+	</div>
 	  
-      <div id="revenueData" class="border-t pt-4 hidden">
-        <h4 class="text-lg font-semibold text-gray-700 mb-2">Detalhes da Receita</h4>
-        <div id="revenueDetails" class="text-gray-600">
-			<!-- Detalhes da receita serão inseridos aqui via JavaScript -->
-			<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-			  <div class="bg-green-100 p-4 rounded-lg">
-				<h5 class="font-semibold text-green-800 mb-2">Receita Mensal</h5>
-				<p id="revenue-Details" class="text-3xl font-bold text-green-600">0</p>
-			  </div>
-			  <div class="bg-blue-100 p-4 rounded-lg">
-				<h5 class="font-semibold text-blue-800 mb-2">Crescimento</h5>
-				<p class="text-3xl font-bold text-blue-600">5%</p>
-			  </div>
+		<div id="revenueData" class="border-t pt-4 hidden">
+			<h4 class="text-lg font-semibold text-gray-700 mb-2">Detalhes da Receita</h4>
+			<div id="revenueDetails" class="text-gray-600">
+				<!-- Detalhes da receita serão inseridos aqui via JavaScript -->
+				<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+				  <div class="bg-green-100 p-4 rounded-lg">
+					<h5 class="font-semibold text-green-800 mb-2">Receita Mensal</h5>
+					<p id="revenue-Details" class="text-3xl font-bold text-green-600">0</p>
+				  </div>
+				  <div class="growth bg-blue-100 p-4 rounded-lg">
+					<h5 class="font-semibold text-blue-800 mb-2">Crescimento</h5>
+					<p class="text-3xl font-bold text-blue-600">5%</p>
+				  </div>
+				</div>
+				<div class="top-sources mt-4 bg-purple-100 p-4 rounded-lg">
+				  <h5 class="font-semibold text-purple-800 mb-2">Principais Fontes</h5>
+				  <ul class="list-disc list-inside text-purple-700">
+					<li>Assinaturas</li>
+					<li>Anúncios</li>
+				  </ul>
+				</div>
 			</div>
-			<div class="mt-4 bg-purple-100 p-4 rounded-lg">
-			  <h5 class="font-semibold text-purple-800 mb-2">Principais Fontes</h5>
-			  <ul class="list-disc list-inside text-purple-700">
-				<li>Assinaturas</li>
-				<li>Anúncios</li>
-			  </ul>
-			</div>
-        </div>
-      </div>
+		</div>
     </div>
   </div>
 </div>
