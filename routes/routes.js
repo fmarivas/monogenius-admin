@@ -227,8 +227,7 @@ router.post('/login', loginValidators, (req, res, next) => {
         }
 		
 		console.log(user)
-		console.log(err)
-		console.log(info)
+		console.log(req.session.loggedIn)
 		
         req.logIn(user, (err) => {
             if (err) {
