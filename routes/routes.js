@@ -140,6 +140,7 @@ router.get('/c/:id', isAuth, async (req,res,next) => {
 		next(error); // Passa o erro para o middleware de erro		
 	}
 	
+	console.log(pageResources[id])
     if (pageDetails[id]) {
         res.render('layout', {
             title: pageDetails[id].name,
@@ -225,9 +226,6 @@ router.post('/login', loginValidators, (req, res, next) => {
             req.flash('error', {errorMessage: info.message});
             return res.redirect('/auth/login');	
         }
-		
-		console.log(user)
-		console.log(req.session.loggedIn)
 		
         req.logIn(user, (err) => {
             if (err) {
